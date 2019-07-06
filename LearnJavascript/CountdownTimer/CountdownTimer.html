@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-		<title>CountdownTimer</title>
+		<title>Countdown Timer</title>
 		<style type="text/css">
 
 		</style>
@@ -10,16 +10,54 @@
 	
 	<body>
 		
+		<audio id='music'>
+		  <source src="init.mp3" type="audio/mpeg">
+		  Your browser does not support the audio tag.
+		</audio>
+		
+		
 		<script type="text/javascript" >
 
+			var timer = {
+				restMinutes:5,
+				restSeconds:0,
+				minute:0,
+				second:0,
+				handle:0,
+				init:function(){
+					var span = document.createElement("span")
+					span.style.fontSize = "3000%"
+					
+					this.restSeconds = this.restMinutes * 60 
+					this.minute = this.restMinutes
+					
+					var obj = this
+					
+					this.handle = setInterval(function(){
+						
+						if(obj.restSeconds > 0){
+							span.innerHTML = "" + (obj.minute < 10 ? "0" + obj.minute : obj.minute) + ":" + (obj.second < 10 ? "0" + obj.second : obj.second)
+							
+							obj.restSeconds -= 1
+						
+							obj.minute =  Math.floor(obj.restSeconds / 60)
+							obj.second =  obj.restSeconds - obj.minute * 60
+							
+						}else{
+							span.innerHTML = "Time's Up"
+						}
+						
+					}, 1000)
+				
+					document.getElementsByTagName('body')[0].appendChild(span)
+					document.getElementById("music").play()
+				}
+				
+			}
 
 			//main
 			window.onload = function(){
-				var span = document.createElement("span")
-			
-				span.innerHTML = "Hello, World"
-			
-				document.getElementsByTagName('body')[0].appendChild(span)
+				timer.init()
 			};
 		</script>
 	</body>
