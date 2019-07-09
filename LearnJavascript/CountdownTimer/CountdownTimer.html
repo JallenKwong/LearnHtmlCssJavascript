@@ -15,21 +15,28 @@
 		  Your browser does not support the audio tag.
 		</audio>
 		
+		<audio id='music2'>
+		  <source src="ring.m4a" type="audio/mpeg">
+		  Your browser does not support the audio tag.
+		</audio>
 		
 		<script type="text/javascript" >
 
 			var timer = {
-				restMinutes:5,
+				initMinutes:30,
 				restSeconds:0,
 				minute:0,
 				second:0,
 				handle:0,
 				init:function(){
 					var span = document.createElement("span")
-					span.style.fontSize = "3000%"
+					span.style.fontSize = (window.innerWidth
+								|| document.documentElement.clientWidth
+								|| document.body.clientWidth) / 3 + "px";
+					span.style.whiteSpace = "nowrap"//文本内容不换行
 					
-					this.restSeconds = this.restMinutes * 60 
-					this.minute = this.restMinutes
+					this.restSeconds = this.initMinutes * 60 
+					this.minute = this.initMinutes
 					
 					var obj = this
 					
@@ -45,6 +52,9 @@
 							
 						}else{
 							span.innerHTML = "Time's Up"
+							window.clearInterval(obj.handle)
+							document.getElementById("music2").play()
+							//span.style.fontSize = "1500%"
 						}
 						
 					}, 1000)
@@ -52,7 +62,6 @@
 					document.getElementsByTagName('body')[0].appendChild(span)
 					document.getElementById("music").play()
 				}
-				
 			}
 
 			//main

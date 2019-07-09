@@ -161,6 +161,8 @@ While this event scheduling is possible without the aid of jQuery, `$(document).
 
 	console.log()
 
+## ready ##
+
 ## $(document).ready和window.onload的区别 ##
 
 `$(document).ready`和`window.onload`都是在都是在页面加载完执行的函数，大多数情况下差别不大，但也是有区别的。

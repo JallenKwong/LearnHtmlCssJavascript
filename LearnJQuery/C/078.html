@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>on demo</title>
+  <style>
+  p {
+    background: yellow;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+  }
+  p.over {
+    background: #ccc;
+  }
+  span {
+    color: red;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<p>Click me!</p>
+<span></span>
+ 
+<button>Click me 2 !</button>
+ 
+<script>
+var count = 0;
+
+//p是选择器，指body的后代p
+$( "body" ).on( "click", "p", function() {
+	var $this = $(this)
+	console.log($this.text())
+	
+	$this.after( "<p>Another paragraph! " + (++count) + "</p>" );
+});
+
+//---
+
+function greet( event ) {
+  alert( "Hello " + event.data.name );
+}
+
+//Passing data to the handler
+$( "button" ).on( "click", {
+  name: "Karl"
+}, greet );
+
+$( "button" ).on( "click", {
+  name: "Addy"
+}, greet );
+
+</script>
+ 
+</body>
+</html>

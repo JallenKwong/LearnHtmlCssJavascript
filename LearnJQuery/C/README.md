@@ -41,6 +41,7 @@ Selector|Matches|Notes
 *|All elements.|$("body \*") [example](000.html)
 \#id|The element with the given ID.|$("#choose") [example](001.html)
 .class|All elements with the given class.|$(".intro") [example](002.html)
+.class.class|All elements with the given classes|$(".intro.demo")
 element|All elements of the given type.|$("p") [example](003.html)
 a, b|Elements that are matched by a or b.|$("h1, li") [example](004.html) 
 a b|Elements b that are descendants后代 of a.|$("div li") [example](005.html)
@@ -83,7 +84,7 @@ Selector|Matches|Notes
 
 Selector|Matches|Notes
 ---|---|---
-[attr]|Elements that have the attribute attr.|$("[id]"), $("div[id]") [example](030.html)
+[attr]|Elements that have the attribute attr.|$("[id]"), $("div[id]"),<br>$("a[href^='http'][href*='henry']") [example](030.html)
 [attr="value"]|Elements whose attr attribute is value.|-
 [attr!="value"]|Elements whose attr attribute is not value.|-
 [attr^="value"]|Elements whose attr attribute begins with value.|与Regex的^相同
@@ -210,4 +211,112 @@ $.contains(a, b)|Determines whether DOM node b contains DOM node a.|$.contains( 
 .toArray()|Gets an array of DOM nodes corresponding to the matched elements.|[example](075.html)
 
 ## Event methods ##
+
+### Binding ###
+
+Event method|Description|Notes
+---|---|---
+.ready(handler)|Binds handler to be called when the DOM and CSS are fully loaded.|-
+.on(type, [selector], [data], handler)|Binds handler to be called when the given type of event is sent to the element. If selector is provided, performs event delegation.|[example](076.html)
+.on(events, [selector], [data])|Binds multiple handlers for events as specified in the events object parameter.|[example1](077.html), [example2](078.html)
+.off(type, [selector], [handler])|Removes bindings on the element.|[example](087.html) <br>// ... Foo will no longer be called.<br>`$( "body" ).off( "click", "p", foo );`
+.bind(type, [data], handler)|Binds handler to be called when the given type of event is sent to the element. **In general, use .on() instead.**|[example1](080.html), [example2](081.html)
+.one(type, [data], handler)|Binds handler to be called when the given type of event is sent to the element. Removes the binding when the handler is called.|[example1](088.html), [example2](089.html)
+.unbind([type], [handler])|Removes the bindings on the element (for an event type, a particular handler, or all bindings).|-
+.delegate(selector, type, [data], handler)|Binds handler to be called when the given type of event is sent to a descendant element matching selector.|-
+.delegate(selector, handlers)|Binds a collection of handlers to be called when the given types of events are sent to a descendant element matching selector.|-
+.undelegate(selector, type, [handler])|Removes the bindings on the element previously bound with .delegate().|-
+
+### Shorthand binding ###
+
+就手写法
+
+Event method|Description|Notes
+---|---|---
+.blur(handler)|Binds handler to be called when the element loses keyboard focus.|-
+.change(handler)|Binds handler to be called when the element's value changes.|-
+.click(handler)|Binds handler to be called when the element is clicked.|[example](079.html)
+.dblclick(handler)|Binds handler to be called when the element is double-clicked.|-
+.error(handler)|Binds handler to be called when the element receives an error event (browser-dependent).|-
+.focus(handler)|Binds handler to be called when the element gains keyboard focus.|-
+.focusin(handler)|Binds handler to be called when the element, or a descendant, gains keyboard focus.|-
+.focusout(handler)|Binds handler to be called when the element, or a descendant, loses keyboard focus.|-
+.keydown(handler)|Binds handler to be called when a key is pressed and the element has keyboard focus.|-
+.keypress(handler)|Binds handler to be called when a keystroke occurs and the element has keyboard focus.|-
+.keyup(handler)|Binds handler to be called when a key is released and the element has keyboard focus.|-
+.load(handler)|Binds handler to be called when the element finishes loading.|-
+.mousedown(handler)|Binds handler to be called when the mouse button is pressed within the element.|-
+.mouseenter(handler)|Binds handler to be called when the mouse pointer enters the element. Not affected by event bubbling.|-
+.mouseleave(handler)|Binds handler to be called when the mouse pointer leaves the element. Not affected by event bubbling.|-
+.mousemove(handler)|Binds handler to be called when the mouse pointer moves within the element.|-
+.mouseout(handler)|Binds handler to be called when the mouse pointer leaves the element.|-
+.mouseover(handler)|Binds handler to be called when the mouse pointer enters the element.|-
+.mouseup(handler)|Binds handler to be called when the mouse button is released within the element.|-
+.resize(handler)|Binds handler to be called when the element is resized.|-
+.scroll(handler)|Binds handler to be called when the element's scroll position changes.|-
+.select(handler)|Binds handler to be called when text in the element is selected.|-
+.submit(handler)|Binds handler to be called when the form element is submitted.|-
+.unload(handler)|Binds handler to be called when the element is unloaded from memory.|-
+.hover(enter, leave)|Binds enter to be called when the mouse enters the element, and leave to be called when the mouse leaves it.|[example1](082.html), [example2](083.html)
+
+### Triggering ###
+
+Event method|Description|Notes
+---|---|---
+.trigger(type, [data])|Triggers handlers for the event on the element and executes the default action for the event.|[example](090.html)
+.triggerHandler(type, [data])|Triggers handlers for the event on the element without executing any default actions.|-
+
+
+### Shorthand triggering ###
+
+Event method|Description|Notes
+---|---|---
+.blur()|Triggers the blur event.|-
+.change()|Triggers the change event.|-
+.click()|Triggers the click event.|-
+.dblclick()|Triggers the dblclick event.|-
+.error()|Triggers the error event.|-
+.focus()|Triggers the focus event.|-
+.keydown()|Triggers the keydown event.|-
+.keypress()|Triggers the keypress event.|-
+.keyup()|Triggers the keyup event.|-
+.select()|Triggers the select event.|-
+.submit()|Triggers the submit event.|-
+
+### Utility ###
+
+Event method|Description|Notes
+---|---|---
+$.proxy(fn, context)|Creates a new function that executes with the given context.|-
+
+
+### Event Object ###
+
+Event Object|Description|Notes
+---|---|---
+event.target|The DOM element that initiated the event.|[example1](084.html), [example2](085.html)
+event.stopPropagation()|Prevents the event from bubbling up the DOM tree, preventing any parent handlers from being notified of the event.|`$( "p" ).click(function( event ) {`<br>`  event.stopPropagation();`<br>`// Do something});`
+event.preventDefault()| If this method is called, the default action of the event will not be triggered.|[example](086.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
