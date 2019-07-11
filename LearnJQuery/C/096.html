@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>toggle demo</title>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<button>Toggle</button>
+<p>Hello</p>
+<p style="display: none">Good Bye</p>
+ 
+<script>
+var flip = 0;
+$( "button" ).click(function() {
+  $( "p" ).toggle( flip++ % 2 === 0 );
+});
+</script>
+ 
+</body>
+</html>

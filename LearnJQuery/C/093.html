@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>show demo</title>
+  <style>
+  span {
+    display: none;
+  }
+  div {
+    display: none;
+  }
+  p {
+    font-weight: bold;
+    background-color: #fcd;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<button>Do it!</button>
+<span>Are you sure? (type 'yes' if you are) </span>
+<div>
+  <form>
+    <input type="text"  value="as;ldkfjalsdf">
+  </form>
+</div>
+<p style="display:none;">I'm hidden...</p>
+ 
+<script>
+function doIt() {
+  $( "span,div" ).show( "slow" );
+}
+// Can pass in function name
+$( "button" ).click( doIt );
+ 
+$( "form" ).submit(function( event ) {
+  if ( $( "input" ).val() === "yes" ) {
+    $( "p" ).show( 4000, function() {
+      $( this ).text( "Ok, DONE! (now showing)" );
+    });
+  }
+  $( "span,div" ).hide( "fast" );
+ 
+  // Prevent form submission
+  event.preventDefault();
+});
+</script>
+ 
+</body>
+</html>

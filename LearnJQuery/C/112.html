@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>stop demo</title>
+  <style>
+  .block {
+    background-color: #abc;
+    border: 2px solid black;
+    width: 200px;
+    height: 80px;
+    margin: 10px;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<button id="toggle">slideToggle</button>
+<div class="block"></div>
+ 
+<script>
+var $block = $( ".block" );
+ 
+// Toggle a sliding animation animation
+$( "#toggle" ).on( "click", function() {
+  $block
+	.stop()
+	.slideToggle( 1000 );
+});
+</script>
+ 
+</body>
+</html>

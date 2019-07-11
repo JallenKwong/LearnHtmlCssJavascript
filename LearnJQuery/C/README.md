@@ -298,25 +298,48 @@ event.target|The DOM element that initiated the event.|[example1](084.html), [ex
 event.stopPropagation()|Prevents the event from bubbling up the DOM tree, preventing any parent handlers from being notified of the event.|`$( "p" ).click(function( event ) {`<br>`  event.stopPropagation();`<br>`// Do something});`
 event.preventDefault()| If this method is called, the default action of the event will not be triggered.|[example](086.html)
 
+## Effect methods ##
 
+### Predefined effects ###
 
+Effect method|Description|Notes
+---|---|---
+.show()|Displays the matched elements.|[example](091.html)
+.hide()|Hides the matched elements.|-
+.show(speed, [callback])|Displays the matched elements by animating height, width, and opacity.|[example1](092.html), [example2](093.html)
+.hide(speed, [callback])|Hides the matched elements by animating height, width, and opacity.|-
+.toggle([speed], [callback])|Displays or hides the matched elements.|[example1](094.html), [example2](095.html), [example3](096.html)
+.slideDown([speed],[callback])|Displays the matched elements with a sliding motion.|[example](097.html)
+.slideUp([speed], [callback])|Hides the matched elements with a sliding motion.|-
+.slideToggle([speed], [callback])|Displays or hides the matched elements with a sliding motion.|[example1](098.html), [example2](099.html)
+.fadeIn([speed], [callback])|Displays the matched elements by fading them to opaque.|-
+.fadeOut([speed], [callback])|Hides the matched elements by fading them to transparent.|-
+.fadeToggle([speed], [callback])|Displays or hides the matched elements with a fading animation.|[example](100.html)
+.fadeTo(speed, opacity, [callback])|Adjusts the opacity of the matched elements.|[example1](101.html), [example2](102.html), [example3](103.html)
 
+### Custom animations ###
 
+Effect method|Description|Notes
+---|---|---
+.animate(properties, [speed], [easing], [callback])|Performs a custom animation of the specified CSS properties.|[example1](104.html),[example2](105.html), [example3 效果串行与并行](106.html)
+.animate(properties, options)|A lower-level interface to .animate(), allowing control over the animation queue.|[example](107.html)
 
+### Queue manipulation ###
 
+Effect method|Description|Notes
+---|---|---
+.queue([queueName])|Retrieves the queue of functions on the first matched element.|[example](108.html)
+.queue([queueName], callback)|Adds callback to the end of the queue.|[example](109.html)
+.queue([queueName], newQueue)|Replaces the queue with a new one.|[example](110.html)
+.dequeue([queueName])|Executes the next function on the queue.|[example](109.html)
+.clearQueue([queueName])|Empties the queue of all pending functions.|[example](110.html)
+.stop([clearQueue],[jumpToEnd])|Stops the currently running animation, then starts queued animations, if any.|[example1](110.html), [example2](111.html), [example3](112.html)
+.finish([queueName])|Stops the currently running animation and immediately advances all queued animations to their target values.|[example](111.html)
+.delay(duration, [queueName])|Waits duration milliseconds before executing the next item in the queue.|[example](113.html)
+.promise([queueName],[target])|Returns a promise object to be resolved once all queued actions on the collection have finished.|[example](114.html)
 
+## DOM manipulation methods ##
 
-
-
-
-
-
-
-
-
-
-
-
-
+### Attributes and properties ###
 
 
