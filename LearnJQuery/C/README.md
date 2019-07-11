@@ -342,4 +342,76 @@ Effect method|Description|Notes
 
 ### Attributes and properties ###
 
+Manipulation method|Description|Notes
+---|---|---
+.attr(key)|Gets the attribute named key.|[example1](115.html), [example2](116.html)
+.attr(key, value)|Sets the attribute named key to value.|-
+.attr(key, fn)|Sets the attribute named key to the result of fn (called separately on each matched element).|[example1](118.html), [example2](119.html)
+.attr(obj)|Sets attribute values given as key-value pairs.|[example](117.html)
+.removeAttr(key)|Removes the attribute named key.|-
+.prop(key)|Gets the property named key.|[example](115.html)
+.prop(key, value)|Sets the property named key to value.|-
+.prop(key, fn)|Sets the property named key to the result of fn (called separately on each matched element).|-
+.prop(obj)|Sets property values given as key-value pairs.|-
+.removeProp(key)|Removes the property named key.|-
+.addClass(class)|Adds the given class to each matched element.|-
+.removeClass(class)|Removes the given class from each matched element.|-
+.toggleClass(class)|Removes the given class if present, and adds it if not, for each matched element.|-
+.hasClass(class)|Returns true if any of the matched elements has the given class.|-
+.val()|Gets the value attribute of the first matched element.|[example1](120.html), [example2](121.html)
+.val(value) or .val(fn)|Sets the value attribute of each element to value.|[example1](122.html), [example2](123.html), [example3](124.html)
+
+### Content ###
+
+Manipulation method|Description|Notes
+---|---|---
+.html()|Gets the HTML content of the first matched element.|[example](125.html)
+.html(value)|Sets the HTML content of each matched element to value.|[example1](126.html), [example2](127.html)
+.text()|Gets the textual content of all matched elements as a single string.|[example](128.html)
+.text(value)|Sets the textual content of each matched element to value.|[example](129.html)
+
+### CSS ###
+
+Manipulation method|Description|Notes
+---|---|---
+.css(key)|Gets the CSS attribute named key.|[example1](130.html), [example2](131.html)
+.css(key, value)|Sets the CSS attribute named key to value.|[example1](132.html), [example2](133.html), [example3](134.html)
+.css(obj)|Sets CSS attribute values given as key-value pairs.|[example1](135.html), [example2](136.html)
+
+### Dimensions ###
+
+Manipulation method|Description|Notes
+---|---|---
+.offset()|Gets the top and left pixel coordinates of the first matched element, relative to the document.|[example1](137.html), [example2](138.html), [example](140.html)
+.offset(coordinates)|Set the current coordinates of every element in the set of matched elements, relative to the document.|[example](139.html)
+.position()|Gets the top and left pixel coordinates of the first matched element, relative to the element returned by .offsetParent().|[example](140.html)
+.scrollTop()|Gets the vertical垂直 scroll position of the first matched element.|[example](141.html)
+.scrollTop(value)|Sets the vertical scroll position of all matched elements to value.|[example](142.html)
+.scrollLeft()|Gets the horizontal scroll position of the first matched element.|-
+.scrollLeft(value)|Sets the horizontal scroll position of all matched elements to value.|-
+.height()|Gets the height of the first matched element.|-
+.height(value)|Sets the height of all matched elements to value.|-
+.width()|Gets the width of the first matched element.|-
+.width(value)|Sets the width of all matched elements to value.|-
+.innerHeight()|Gets the height of the first matched element, including padding, but not border.|-
+.innerWidth()|Gets the width of the first matched element, including padding, but not border.|-
+.outerHeight(includeMargin)|Gets the height of the first matched element, including padding, border, and optional margin.|-
+.outerWidth(includeMargin)|Gets the width of the first matched element, including padding, border, and optional margin.|-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

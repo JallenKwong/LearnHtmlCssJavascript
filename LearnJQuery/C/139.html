@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>offset demo</title>
+  <style>
+  p {
+    margin-left: 10px;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<p>Hello</p><p>2nd Paragraph</p>
+ 
+<script>
+$( "p:last" ).offset({ top: 100, left:200 });
+</script>
+ 
+</body>
+</html>

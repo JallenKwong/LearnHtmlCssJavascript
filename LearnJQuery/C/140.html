@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>position demo</title>
+  <style>
+  div {
+    padding: 15px;
+  }
+  p {
+    margin-left: 10px;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<div>
+  <p>Hello</p>
+</div>
+<p></p>
+<p></p>
+<script>
+var p = $( "p:first" );
+var position = p.position();
+$( "p:eq(1)" ).text( "position - left: " + position.left + ", top: " + position.top );
+
+var offset = p.offset();
+$( "p:eq(2)" ).text( "offset - left: " + offset.left + ", top: " + offset.top );
+</script>
+ 
+</body>
+</html>
