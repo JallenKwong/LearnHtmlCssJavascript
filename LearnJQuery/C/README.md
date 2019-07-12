@@ -1,5 +1,7 @@
 # Quick Reference #
 
+[https://api.jquery.com](https://api.jquery.com)
+
 [1.Selector expressions](#selector-expressions)
 
 [1.1.Simple CSS](#simple-css)
@@ -389,16 +391,20 @@ Manipulation method|Description|Notes
 .scrollTop(value)|Sets the vertical scroll position of all matched elements to value.|[example](142.html)
 .scrollLeft()|Gets the horizontal scroll position of the first matched element.|-
 .scrollLeft(value)|Sets the horizontal scroll position of all matched elements to value.|-
-.height()|Gets the height of the first matched element.|-
+.height()|Gets the height of the first matched element.|[example](143.com)
 .height(value)|Sets the height of all matched elements to value.|-
 .width()|Gets the width of the first matched element.|-
 .width(value)|Sets the width of all matched elements to value.|-
 .innerHeight()|Gets the height of the first matched element, including padding, but not border.|-
+.innerHeight(value) or .innerHeight(fn)|Set the CSS inner height of each element in the set of matched elements.|[example](144.com)
 .innerWidth()|Gets the width of the first matched element, including padding, but not border.|-
+.innerWidth(value) or .innerWidth(fn)|Set the CSS inner width of each element in the set of matched elements.|-
 .outerHeight(includeMargin)|Gets the height of the first matched element, including padding, border, and optional margin.|-
+.outerHeight(value) or .outerHeight(fn)|Set the CSS outer height of each element in the set of matched elements.|-
 .outerWidth(includeMargin)|Gets the width of the first matched element, including padding, border, and optional margin.|-
+.outerWidth(value) or .outerWidth(fn)|Set the CSS outer width of each element in the set of matched elements.|-
 
-
+![](image/01.png)
 
 
 
