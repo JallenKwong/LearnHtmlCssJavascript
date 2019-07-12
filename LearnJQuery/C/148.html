@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>wrap demo</title>
+  <style>
+  div {
+    border: 2px solid blue;
+  }
+  p {
+    background: yellow;
+    margin: 4px;
+  }
+  
+  .doublediv{
+    border: 2px solid blue;
+    margin: 2px;
+    padding: 2px;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<p class='p1'>Hello</p>
+<p class='p1'>cruel</p>
+<p class='p1'>World</p>
+ 
+<hr>
+
+<span>Span Text</span>
+<strong>What about me?</strong>
+<span>Another One</span>
+ 
+<hr>
+
+<p class='p2'>Hello</p>
+<p class='p2'>cruel</p>
+<p class='p2'>World</p>
+
+<hr>
+
+<p class='p3'>Hello</p>
+<p class='p3'>cruel</p>
+<p class='p3'>World</p>
+
+<div class="doublediv"><div></div></div>
+
+<script>
+$( ".p1" ).wrap( "<div></div>" );
+
+$( "span" ).wrap( "<div><div><p><em><b></b></em></p></div></div>" );
+
+$( ".p2" ).wrap( document.createElement( "div" ) );
+
+$( ".p3" ).wrap( $( ".doublediv" ) );
+
+</script>
+ 
+</body>
+</html>

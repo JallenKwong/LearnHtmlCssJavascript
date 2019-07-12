@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>append demo</title>
+  <style>
+  p {
+    background: yellow;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<p id="p1">I would like to say: </p>
+<p id="p2">I would like to say: </p>
+
+<strong id="s">Hello world!!!</strong>
+<p id="p3">I would like to say: </p>
+
+<script>
+$( "#p1" ).append( "<strong>Hello</strong>" );
+
+$( "#p2" ).append(document.createTextNode( "Hello" ));
+
+$( "#p3" ).append( $( "strong#s" ) );
+</script>
+ 
+</body>
+</html>

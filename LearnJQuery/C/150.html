@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>wrapInner demo</title>
+  <style>
+  p {
+    background: #bbf;
+  }
+  
+   div {
+    border: 2px green solid;
+    margin: 2px;
+    padding: 2px;
+  }
+  
+   .p2,.p3{
+    background: #9f9;
+  }
+  
+  .red {
+    color: red;
+  }
+  
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<p class='p1'>Hello</p>
+<p class='p1'>cruel</p>
+<p class='p1'>World</p>
+
+<hr>
+ 
+<span>Plain old text, or is it?</span>
+ 
+<hr>
+
+<p class='p2'>Hello</p>
+<p class='p2'>cruel</p>
+<p class='p2'>World</p>
+
+<hr>
+
+<p class='p3'>Hello</p>
+<p class='p3'>cruel</p>
+<p class='p3'>World</p>
+
+<script>
+$( ".p1" ).wrapInner( "<b></b>" );
+
+$( "span" ).wrapInner( "<div><div><p><em><b></b></em></p></div></div>" );
+
+$( ".p2" ).wrapInner( document.createElement( "b" ) );
+
+$( ".p3" ).wrapInner( $( "<span class='red'></span>" ) );
+
+</script>
+ 
+</body>
+</html>

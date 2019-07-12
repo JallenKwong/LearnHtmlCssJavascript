@@ -32,6 +32,50 @@
 
 [3.Event methods](#event-methods)
 
+[3.1.Binding](#binding)
+
+[3.2.Shorthand binding](#shorthand-binding)
+
+[3.3.Triggering](#triggering)
+
+[3.4.Shorthand triggering](#shorthand-triggering)
+
+[3.5.Utility](#utility)
+
+[3.6.Event Object](#event-object)
+
+[4.Effect methods](#effect-methods)
+
+[4.1.Predefined effects](#predefined-effects)
+
+[4.2.Custom animations](#custom-animations)
+
+[4.3.Queue manipulation](#queue-manipulation)
+
+[5.DOM manipulation methods](#dom-manipulation-methods)
+
+[5.1.Attributes and properties](#attributes-and-properties)
+
+[5.2.Content](#content)
+
+[5.3.CSS](#css)
+
+[5.4.Dimensions](#dimensions)
+
+[5.5.Insertion](#insertion)
+
+[5.6.Replacement](#replacement)
+
+[5.7.Removal](#removal)
+
+[5.8.Copying](#copying)
+
+[5.9.Data](#data)
+
+[6.Ajax methods](#ajax-methods)
+
+[6.1.Issuing requests](#issuing-requests)
+
 ## Selector expressions ##
 
 与CSS的选择器的语法基本相同
@@ -406,18 +450,58 @@ Manipulation method|Description|Notes
 
 ![](image/01.png)
 
+### Insertion ###
 
+Manipulation method|Description|Notes
+---|---|---
+.append(content)|Inserts content at the **end** of the **interior内部** of each matched element.|[example](145.html)
+.appendTo(selector)|Inserts the matched elements at the end of the interior of the elements matched by selector.|[example](146.html)
+.prepend(content)|Inserts content at the **beginning** of the interior of each matched element.|-
+.prependTo(selector)|Inserts the matched elements at the beginning of the interior of the elements matched by selector.|-
+.after(content)|Inserts content after each matched element.|[example](147.html)
+.insertAfter(selector)|Inserts the matched elements after each of the elements matched by selector.|-
+.before(content)|Inserts content before each matched element.|-
+.insertBefore(selector)|Inserts the matched elements before each of the elements matched by selector.|-
+.wrap(content)|Wraps each of the matched elements within content.|[example](148.html)
+.wrapAll(content)|Wraps all of the matched elements as a single unit within content.|[example](149.html)
+.wrapInner(content)|Wraps the interior contents of each of the matched elements within content.|[example](150.html)
 
+有介词的函数的参数是选择器
 
+### Replacement ###
 
+Manipulation method|Description|Notes
+---|---|---
+.replaceWith(content)|Replaces the matched elements with content.|[example](151.html)
+.replaceAll(selector)|Replaces the elements matched by selector with the matched elements.|[example](152.html)
 
+### Removal ###
 
+Manipulation method|Description|Notes
+---|---|---
+.empty()|Removes the child nodes of each matched element.|[example](153.html)
+.remove([selector])|Removes the matched nodes (optionally filtered by selector) from the DOM.|[example](154.html)
+.detach([selector])|Removes the matched nodes (optionally filtered by selector) from the DOM, preserving保留 jQuery data attached to them.|[example](155.html)
+.unwrap()|Removes the element's parent.|[example](156.html)
 
+### Copying ###
 
+Manipulation method|Description|Notes
+---|---|---
+.clone([withHandlers], [deepWithHandlers])|Makes a copy of all matched elements, optionally also copying event handlers.|[example](157.html)
 
+### Data ###
 
+数据寄生
 
+Manipulation method|Description|Notes
+---|---|---
+.data(key)|Gets the data item named key associated with the first matched element.|[example1](158.html), [example2](159.html)
+.data(key, value)|Sets the data item named key associated with each matched element to value.|[example1](158.html), [example2](159.html)
+.removeData(key)|Removes the data item named key associated with each matched element.|[example](159.html)
 
+## Ajax methods ##
 
+### Issuing requests ###
 
-
+发出请求

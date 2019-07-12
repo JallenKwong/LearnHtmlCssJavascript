@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>replaceWith demo</title>
+  <style>
+  button {
+    display: block;
+    margin: 3px;
+    color: red;
+    width: 200px;
+  }
+  div {
+    color: red;
+    border: 2px solid blue;
+    width: 200px;
+    margin: 3px;
+    text-align: center;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<button>First</button>
+<button>Second</button>
+<button>Third</button>
+ 
+<hr>
+ 
+<p class="p1">Hello</p>
+<p class="p1">cruel</p>
+<p class="p1">World</p>
+ 
+<hr>
+ 
+  <p class="p2">Hello</p>
+  <p class="p2">cruel</p>
+  <p class="p2">World</p>
+  <div id='replaced'>Replaced!</div>
+ 
+<hr>
+ 
+ <p id='p'>
+  <button>Replace!</button>
+</p>
+<div class="container">
+  <div class="inner">Scooby</div>
+  <div class="inner">Dooby</div>
+  <div class="inner">Doo</div>
+</div>
+ 
+<script>
+$( "button" ).click(function() {
+  $( this ).replaceWith( "<div>" + $( this ).text() + "</div>" );
+});
+
+$( ".p1" ).replaceWith( "<b>Paragraph. </b>" );
+
+$( ".p2" ).click(function() {
+  $( this ).replaceWith( $( "#replaced" ) );
+});
+
+$( "button" ).on( "click", function() {
+  var $container = $( "div.container" ).replaceWith(function() {
+    return $( this ).contents();
+  });
+ 
+  $( "p#p" ).append( $container.attr( "class" ) );
+});
+
+</script>
+ 
+</body>
+</html>

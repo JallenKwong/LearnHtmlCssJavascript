@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>remove demo</title>
+  <style>
+  p {
+    background: yellow;
+    margin: 6px 0;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<p class="p1">Hello</p>
+how are
+<p class="p1">you?</p>
+<button id="b1">Call remove() on paragraphs</button>
+ 
+ <hr>
+ 
+ <p class="p2 hello">Hello</p>
+how are
+<p class="p2">you?</p>
+<button id="b2">Call remove( ":contains('Hello')" ) on paragraphs</button>
+ 
+ 
+<script>
+$( "button#b1" ).click(function() {
+  $( ".p1" ).remove();
+});
+
+$( "button#b2" ).click(function() {
+  $( ".p2" ).remove( ":contains('Hello')" );
+});
+</script>
+ 
+</body>
+</html>

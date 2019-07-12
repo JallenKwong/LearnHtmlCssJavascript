@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>wrapAll demo</title>
+  <style>
+  div {
+    border: 2px solid blue;
+  }
+  p {
+    background: yellow;
+    margin: 4px;
+  }
+  .doublediv {
+    border-color: red;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<p class='p1'>Hello</p>
+<p class='p1'>cruel</p>
+<p class='p1'>World</p>
+
+<hr>
+
+<span>Span Text</span>
+<strong>What about me?</strong>
+<span>Another One</span>
+ 
+<hr>
+
+<p class='p2'>Hello</p>
+<p class='p2'>cruel</p>
+<p class='p2'>World</p>
+ 
+ 
+<hr>
+
+<p class='p3'>Hello</p>
+<p class='p3'>cruel</p>
+<p class='p3'>World</p>
+<div class="doublediv"><div></div></div>
+ 
+<script>
+$(".p1" ).wrapAll( "<div></div>" );
+
+$("span").wrapAll( "<div><div><p><em><b></b></em></p></div></div>" );
+
+$( ".p2" ).wrapAll( document.createElement( "div" ) );
+
+$( ".p3" ).wrapAll( $( ".doublediv" ) );
+
+</script>
+ 
+</body>
+</html>
