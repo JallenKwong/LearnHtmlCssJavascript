@@ -504,4 +504,67 @@ Manipulation method|Description|Notes
 
 ### Issuing requests ###
 
+//TODO:弄个Spring Boot后台来演示这ajax系列方法
+
 发出请求
+
+Ajax method|Description|Notes
+---|---|---
+$.ajax([url], options)|Makes an Ajax request using the provided set of options. This is a low-level method that is often called via other convenience methods.|-
+.load(url, [data], [callback])|Makes an Ajax request to url and places the response into the matched elements.|-
+$.get(url, [data], [callback], [returnType])|Makes an Ajax request to url using the GET method.|-
+$.getJSON(url, [data], [callback])|Makes an Ajax request to url, interpreting the response as a JSON data structure.|-
+$.getScript(url, [callback])|Makes an Ajax request to url, executing the response as JavaScript.|-
+$.post(url, [data], [callback], [returnType])|Makes an Ajax request to url using the POST method.|-
+
+### Request monitoring ###
+
+Ajax method|Description|Notes
+---|---|---
+.ajaxComplete(handler)|Binds handler to be called when any Ajax transaction completes.|-
+.ajaxError(handler)|Binds handler to be called when any Ajax transaction completes with an error.|-
+.ajaxSend(handler)|Binds handler to be called when any Ajax transaction begins.|-
+.ajaxStart(handler)|Binds handler to be called when any Ajax transaction begins, and no others are active.|-
+.ajaxStop(handler)|Binds handler to be called when any Ajax transaction ends, and no others are still active.|-
+.ajaxSuccess(handler)|Binds handler to be called when any Ajax transaction completes successfully.|-
+
+### Configuration ###
+
+Ajax method|Description|Notes
+---|---|---
+$.ajaxSetup(options)|Sets default options for all subsequent Ajax transactions.|-
+$.ajaxPrefilter([dataTypes], handler)|Modifies the options on each Ajax request before it is processed by $.ajax().|-
+$.ajaxTransport(transportFunction)|Defines a new transport mechanism for Ajax transactions.|-
+
+### Utilities ###
+
+Ajax method|Description|Notes
+---|---|---
+.serialize()|Encodes the values of a set of form controls into a query string.|[example](160.html)
+.serializeArray()|Encodes the values of a set of form controls into a JavaScript data structure.|[example](161.html)
+$.param(obj)|Encodes an arbitrary object of key-value pairs into a query string.|[example](162.html)
+$.globalEval(code)|Evaluates the given JavaScript string in the global context.|[example](163.html)
+$.parseJSON(json)|Converts the given JSON string into a JavaScript object.<br>As of jQuery 3.0, $.parseJSON is deprecated. To parse JSON strings use the native JSON.parse method instead.|[example](164.html)
+$.parseXML(xml)|Converts the given XML string into an XML document.|[example](165.html)
+$.parseHTML(html)|Converts the given HTML string into a set of DOM elements.|[example](166.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

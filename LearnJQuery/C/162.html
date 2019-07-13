@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.param demo</title>
+  <style>
+  div {
+    color: red;
+  }
+  </style>
+  <script src="./jquery/jquery.js"></script>
+</head>
+<body>
+ 
+<div id="results"></div>
+ 
+<script>
+var params = { width:1680, height:1050 };
+var str = jQuery.param( params );
+$( "#results" ).text( str );
+
+console.log($.param({ a: [ 2, 3, 4 ] }))
+console.log($.param({ a: { b: 1, c: 2 }, d: [ 3, 4, { e: 5 } ] }))
+
+</script>
+ 
+</body>
+</html>
