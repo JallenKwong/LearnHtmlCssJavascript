@@ -1,11 +1,11 @@
-//在kanbilibili下载视频文件信息收集工具脚本
+//下载视频文件信息收集工具脚本
 //要确保加载了jQuery
 var downloadUtils = {
 	clickLoadMoreManyTimes:function(){
 		//十次点击“加载更多”
 		for(var i=0;i < 30;i++){$('.download~a.more')[0].click()}
 	},
-	getDownloadUrls:function(flag){//flag表示是否在URL前添加文件大小等相关信息
+	getDownloadUrls:function(flag){//falg表示是否在URL前添加文件大小等相关信息
 		//文件相关信息与下载地址们
 		var str=''
 		$('.download a[target="_blank"]').each(function( index ) {
@@ -38,22 +38,38 @@ var downloadUtils = {
 		})
 		console.log(total + "M")//9559M		
 	},
-	getFileOfficialName:function(){
+	getFileOfficialName:function(prefix){
 		//打印文件名 (按md的方式)
 		var str = ''
-		$('.list-box a').each(function(index, elem){
-			var temp = ''
-			var a = index + 1
-			
-			if (a < 10){
-				temp = '00' + a
-			}else if(a >= 10 && a < 100){
-				temp = '0' + a
-			}else{
-				temp = '' + a
+		
+		function getNumOfDigits(num){
+			var result = 0
+			var a = num, b = 0
+			while(a > 0){
+				b = a % 10
+				a = Math.floor((a - b)/10)
+				result++
 			}
+			return result
+		}
+		
+		var theNumOfTitle = $('.list-box a').length
+		var theNumOfDigits = getNumOfDigits(theNumOfTitle)
+		
+		$('.list-box a').each(function(index, elem){
+			var path = '.flv'
+			var aStr = (index + 1).toString()
+			var diff = theNumOfDigits - aStr.length
+			
+			//根据最大集号自动补充前缀n个0，使它们位数都相同
+			path =  (diff > 0 ? '0'.repeat(diff) : '') + aStr + path
+			
+			if(prefix){
+				path = prefix + path
+			}
+			
 			var title = $(elem).attr('title').replace('[','(').replace(']',')')
-			str+=("["+title+"]("+temp+'.flv)\n\n')
+			str+=("["+title+"]("+path+')\n\n')
 		})
 		console.log(str)
 	},
