@@ -55,6 +55,12 @@
 							window.clearInterval(obj.handle)
 							document.getElementById("music2").play()
 							//span.style.fontSize = "1500%"
+							
+							//不停地闪烁
+							window.setInterval(function(){
+								span.style.display = (span.style.display=="none"?"initial":"none")
+							}, 800)
+							
 						}
 						
 					}, 1000)
