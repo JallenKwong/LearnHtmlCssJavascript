@@ -28,19 +28,49 @@
 				minute:0,
 				second:0,
 				handle:0,
+				span:null,
+				table:null,
+				stopFlag:false,
+				setFontSize:function(){
+					if(this.span != null){
+						this.span.style.fontSize = (window.innerWidth
+								|| document.documentElement.clientWidth
+								|| document.body.clientWidth) / 3 + "px"
+					}
+				},
 				init:function(){
 					var span = document.createElement("span")
-					span.style.fontSize = (window.innerWidth
-								|| document.documentElement.clientWidth
-								|| document.body.clientWidth) / 3 + "px";
+					this.span = span
+					this.setFontSize()
+					
+					span.id = "numbers"
 					span.style.whiteSpace = "nowrap"//文本内容不换行
 					
 					this.restSeconds = this.initMinutes * 60 
 					this.minute = this.initMinutes
 					
+					//进度条
+					var table = document.createElement("table")
+					var tr = document.createElement("tr")
+					var td1 = document.createElement("td")
+					var td2 = document.createElement("td")
+					
+					td1.innerHTML = td2.innerHTML= "&nbsp;"
+					td1.style.backgroundColor = "red"
+					
+					tr.appendChild(td1)
+					tr.appendChild(td2)
+					
+					table.appendChild(tr)
+					
+					this.table = table
+					
 					var obj = this
 					
 					this.handle = setInterval(function(){
+						
+						if(obj.stopFlag)
+							return
 						
 						if(obj.restSeconds > 0){
 							span.innerHTML = "" + (obj.minute < 10 ? "0" + obj.minute : obj.minute) + ":" + (obj.second < 10 ? "0" + obj.second : obj.second)
@@ -49,6 +79,14 @@
 						
 							obj.minute =  Math.floor(obj.restSeconds / 60)
 							obj.second =  obj.restSeconds - obj.minute * 60
+							
+							//刷新进度条
+							obj.table.style.width = obj.span.offsetWidth + "px"
+							
+							obj.table.firstChild.firstChild.style.width = (obj.restSeconds / (obj.initMinutes * 60) * 100) + "%"
+							
+							
+							//console.log(obj.span.offsetWidth)
 							
 						}else{
 							span.innerHTML = "Time's Up"
@@ -64,8 +102,12 @@
 						}
 						
 					}, 1000)
+
+					var body = document.getElementsByTagName('body')[0]
 				
-					document.getElementsByTagName('body')[0].appendChild(span)
+					body.appendChild(span)
+					body.appendChild(table)
+					
 					document.getElementById("music").play()
 				}
 			}
@@ -73,7 +115,20 @@
 			//main
 			window.onload = function(){
 				timer.init()
-			};
+			}
+			
+			window.onresize = function(){
+				timer.setFontSize()
+			}
+			
+			//pause
+			window.onclick = function(){
+				//timer.stopFlag = !timer.stopFlag
+			}
+			
+			
+			//TODO:记录使用日期时间
+			
 		</script>
 	</body>
 </html> 
