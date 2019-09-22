@@ -4,11 +4,38 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 		<title>Countdown Timer</title>
 		<style type="text/css">
-
+			input{
+			    padding-bottom: 0px;
+				padding-top: 0px;
+				border-top-width: 0px;
+				border-left-width: 0px;
+				border-right-width: 0px;
+				width:100%;
+			}
 		</style>
 	</head>
 	
 	<body>
+		<span id="numbers" style="white-space:nowrap;"></span>
+		
+		<table id="table1" >
+			<tr>
+				<td style="background-color:red;padding:3px;"></td>
+				<td></td>
+			</tr>
+		</table>
+		
+		<table id="table2">
+			<tr>
+				<td style="width:80%;">
+					<input id="content"/>
+				</td>
+				<td style="text-align:center;background-color:rgb(41, 74, 155);">
+					<span style="color:white;width:100%;">Export</span>
+				</td>
+			</tr>
+		</table>
+
 		
 		<audio id='music'>
 		  <source src="music/Windows XP 启动.wav" type="audio/mpeg">
@@ -28,43 +55,24 @@
 				minute:0,
 				second:0,
 				handle:0,
-				span:null,
-				table:null,
 				stopFlag:false,
 				setFontSize:function(){
-					if(this.span != null){
-						this.span.style.fontSize = (window.innerWidth
+					document.getElementById("numbers").style.fontSize = (window.innerWidth
 								|| document.documentElement.clientWidth
 								|| document.body.clientWidth) / 3 + "px"
-					}
 				},
 				init:function(){
-					var span = document.createElement("span")
-					this.span = span
+					var span = document.getElementById('numbers')
 					this.setFontSize()
-					
-					span.id = "numbers"
-					span.style.whiteSpace = "nowrap"//文本内容不换行
 					
 					this.restSeconds = this.initMinutes * 60 
 					this.minute = this.initMinutes
 					
 					//进度条
-					var table = document.createElement("table")
-					var tr = document.createElement("tr")
-					var td1 = document.createElement("td")
-					var td2 = document.createElement("td")
-					
-					td1.innerHTML = td2.innerHTML= "&nbsp;"
-					td1.style.backgroundColor = "red"
-					
-					tr.appendChild(td1)
-					tr.appendChild(td2)
-					
-					table.appendChild(tr)
-					
-					this.table = table
-					
+					var table = document.getElementById("table1")
+
+					var table2 = document.getElementById("table2")
+
 					var obj = this
 					
 					this.handle = setInterval(function(){
@@ -81,12 +89,10 @@
 							obj.second =  obj.restSeconds - obj.minute * 60
 							
 							//刷新进度条
-							obj.table.style.width = obj.span.offsetWidth + "px"
+							table2.style.width = table.style.width = span.offsetWidth + "px"
 							
-							obj.table.firstChild.firstChild.style.width = (obj.restSeconds / (obj.initMinutes * 60) * 100) + "%"
+							document.querySelector('#table1 td').style.width = (obj.restSeconds / (obj.initMinutes * 60) * 100) + "%"
 							
-							
-							//console.log(obj.span.offsetWidth)
 							
 						}else{
 							span.innerHTML = "Time's Up"
@@ -102,11 +108,6 @@
 						}
 						
 					}, 1000)
-
-					var body = document.getElementsByTagName('body')[0]
-				
-					body.appendChild(span)
-					body.appendChild(table)
 					
 					document.getElementById("music").play()
 				}
@@ -125,10 +126,7 @@
 			window.onclick = function(){
 				//timer.stopFlag = !timer.stopFlag
 			}
-			
-			
-			//TODO:记录使用日期时间
-			
+
 		</script>
 	</body>
 </html> 
