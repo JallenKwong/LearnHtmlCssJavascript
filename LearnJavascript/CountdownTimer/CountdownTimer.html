@@ -29,6 +29,15 @@
 					<input id="content"/>
 				</td>
 			</tr>
+			<tr>
+				<td style="width:100%;" colspan=2>
+					<canvas id="myCanvas" height="6">
+					Your browser does not support the canvas element.
+					</canvas>
+				</td>
+			</tr>
+			
+			
 		</table>
 		
 		<audio id='music'>
@@ -82,6 +91,17 @@
 						td2.style.display = "none"
 					}
 					
+					var canvas = document.getElementById('myCanvas')
+					canvas.width = span.offsetWidth
+					
+					var ctx = canvas.getContext("2d")
+					var rectWeight = progress * span.offsetWidth
+					
+					ctx.clearRect(0, 0, span.offsetWidth, 20)
+					ctx.fillStyle = "#FF0000"
+					//console.log("rectWeight: " + rectWeight)
+					//console.log(progress * span.offsetWidth)
+					ctx.fillRect(0, 0, rectWeight, 20)
 				},
 				init:function(){
 					this.startTime = Date.now()
@@ -123,16 +143,22 @@
 							
 							//不停地闪烁
 							window.setInterval(function(){
-								span.innerHTML = (span.innerHTML == "Time ")?"is up":"Time "
-							}, 800)
+								span.innerHTML = (span.innerHTML == "Time ")?"is up.":"Time "
+							}, 5000)
 						}
 						
 					}, 1000)
 					
 					document.getElementById("music").play()
 					
-					document.getElementById("numbers").addEventListener("click", function(){
+					var numbers = document.getElementById("numbers")
+					
+					numbers.addEventListener("click", function(){
 						obj.coverFlag = !obj.coverFlag
+					})
+
+					numbers.addEventListener("dblclick", function(){
+						obj.stopFlag = !obj.stopFlag
 					})
 
 					document.getElementById('content').addEventListener("blur", function(){
@@ -151,9 +177,10 @@
 					document.getElementById('table1').addEventListener("dblclick", function(){
 						console.log("timerHistory:")
 						console.log(localStorage.getItem('timerHistory'))
+						console.log("\n")
 						obj.exportHistory()
 					})
-
+					
 				},
 				markdownRecord:function(content){
 					var records = []
@@ -163,7 +190,7 @@
 						records = JSON.parse(timerHistory)
 					}
 					
-					var lastRecord = records[records.length - 1]
+					var lastRecord = records[0]
 					
 					if(lastRecord && lastRecord.start == this.startTime){
 						lastRecord.note = content
@@ -173,13 +200,16 @@
 							duration:this.initMinutes,
 							note:content
 						}
-						records.push(history)				
+						records.unshift(history)//数组头插入元素			
 					}
 					
 					var recordsJson = JSON.stringify(records)
 					
 					//将结果存入本地
 					localStorage.setItem("timerHistory", recordsJson)
+					
+					console.log(records[0])
+					console.log("Marked it Down.")
 					
 				},
 				exportHistory:function(){
@@ -201,6 +231,7 @@
 					document.body.removeChild(element);
 				}
 			}
+			
 
 			window.onresize = function(){
 				timer.setFontSize()
@@ -215,6 +246,9 @@
 			//main
 			window.onload = function(){
 				timer.init()
+				
+
+				
 			}
 		</script>
 	</body>
